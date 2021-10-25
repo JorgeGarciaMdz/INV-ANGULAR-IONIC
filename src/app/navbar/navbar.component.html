@@ -1,18 +1,27 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">Home</a>
-    <form class="d-flex" (submit)="submitForm()">
-      <app-item-form class_item="form-control me-2" type="text" placeholder="user" name="user"
-      (outputValue) = "changeValueUser($event)"
-      ></app-item-form>
-      <!-- <input class="form-control me-2" type="password" name="password" placeholder="password"
-                aria-label="Password"> -->
-      <app-item-form class_item="form-control me-2" type="password" placeholder="password" name="password"
-      (outputValue) = "changeValuePassword($event)"
-      >
-      </app-item-form>
-      <button class="btn btn-outline-success" type="submit">Login</button>
-      <!-- <input type="submit" value="Login" > -->
-    </form>
+    <div *ngIf="!logIn">
+      <form class="d-flex" (submit)="loginForm()">
+        <app-item-form class_item="form-control me-2" type="text" placeholder="user" name="user"
+        (outputValue) = "changeValueUser($event)"
+        ></app-item-form>
+        <!-- <input class="form-control me-2" type="password" name="password" placeholder="password"
+                  aria-label="Password"> -->
+        <app-item-form class_item="form-control me-2" type="password" placeholder="password" name="password"
+        (outputValue) = "changeValuePassword($event)"
+        >
+        </app-item-form>
+        <button class="btn btn-outline-primary" type="submit">Login</button>
+      </form>
+    </div>
+    <div *ngIf="logIn">
+      <form class="d-flex" (submit)="logout()">
+        <span class="navbar-text" style="padding-right: 15px;">
+          {{loginData.user}}
+        </span>
+        <button class="btn btn-outline-primary" type="submit">LogOut</button>
+      </form>
+    </div>
   </div>
 </nav>

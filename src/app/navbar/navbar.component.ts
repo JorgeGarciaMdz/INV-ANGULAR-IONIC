@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Login } from './login.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +14,13 @@ export class NavbarComponent implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  logIn: boolean = false;
+
+  loginService: LoginService;
+
+  constructor(  loginService: LoginService) {
+    this.loginService = loginService;
+  }
 
   ngOnInit(): void {
   }
@@ -25,13 +33,14 @@ export class NavbarComponent implements OnInit {
     this.loginData.password = e
   }
 
-  submitForm(){
-    console.log("user: " + this.loginData.user + ", password: " + this.loginData.password);
+  loginForm():boolean{
+    this.logIn = this.loginService.logIn(this.loginData);
+    return false;
+  }
+  logout():boolean{
+    this.logIn = false;
     return false;
   }
 }
 
-export interface Login{
-  user: string,
-  password: string
-}
+
