@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
