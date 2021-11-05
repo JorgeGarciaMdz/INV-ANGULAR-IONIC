@@ -18,26 +18,30 @@ export class NavbarComponent implements OnInit {
 
   loginService: LoginService;
 
-  constructor(  loginService: LoginService) {
+  constructor(loginService: LoginService) {
     this.loginService = loginService;
   }
 
   ngOnInit(): void {
   }
 
-  changeValueUser(e:string){
+  changeValueUser(e: string) {
     this.loginData.user = e;
   }
 
-  changeValuePassword(e:string){
+  changeValuePassword(e: string) {
     this.loginData.password = e
   }
 
-  loginForm():boolean{
+  loginForm(): boolean {
     this.logIn = this.loginService.logIn(this.loginData);
     return false;
   }
-  logout():boolean{
+  logout(): boolean {
+    this.loginData = {
+      user: '',
+      password: ''
+    }
     this.logIn = false;
     return false;
   }
