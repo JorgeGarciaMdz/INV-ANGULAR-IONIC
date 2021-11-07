@@ -14,14 +14,15 @@
           <button class="btn btn-outline-primary" type="submit" style="margin-left: 2rem;">Log In</button>
         </div>
         <div>
-          <button class="btn btn-outline-primary" type="button" style="margin-left: 1rem;">Sign In</button>
+          <button class="btn btn-outline-primary" type="button" style="margin-left: 1rem;"
+          (click)="signIn()">Sign In</button>
         </div>
       </form>
     </div>
     <div *ngIf="logIn">
       <form class="d-flex" (submit)="logout()">
         <span class="navbar-text" style="padding-right: 15px;">
-          {{loginData.user}}
+          {{loginData.email}}
         </span>
         <button class="btn btn-outline-primary" type="submit">LogOut</button>
       </form>

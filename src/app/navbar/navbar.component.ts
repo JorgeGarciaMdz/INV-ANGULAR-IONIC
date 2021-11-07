@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from './login.service';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { LoginService } from './login.service';
 export class NavbarComponent implements OnInit {
 
   loginData: Login = {
-    user: '',
+    email: '',
     password: ''
   };
 
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
   loginService: LoginService;
 
-  constructor(loginService: LoginService) {
+  constructor(loginService: LoginService, private router: Router) {
     this.loginService = loginService;
   }
 
@@ -26,7 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changeValueUser(e: string) {
-    this.loginData.user = e;
+    this.loginData.email = e;
   }
 
   changeValuePassword(e: string) {
@@ -34,16 +35,29 @@ export class NavbarComponent implements OnInit {
   }
 
   loginForm(): boolean {
-    this.logIn = this.loginService.logIn(this.loginData);
+    // this.logIn = this.loginService.logIn(this.loginData);
+    console.log("navbar _> " +  JSON.stringify);
+    this.loginService.logIn(this.loginData)
+    .subscribe((data) => {
+      if(data){
+        this.logIn = true;
+      } else {
+        this.logIn = false;
+      }
+    })
     return false;
   }
   logout(): boolean {
     this.loginData = {
-      user: '',
+      email: '',
       password: ''
     }
     this.logIn = false;
     return false;
+  }
+
+  signIn(){
+    this.router.navigateByUrl('signin');
   }
 }
 

@@ -7,6 +7,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ItemFormComponent } from './item-form/item-form.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [ // declaracion de los componentes que la integran
     AppComponent,
@@ -18,7 +20,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   /* providers: Creadores de servicios que este NgModule aporta a la colección global de 
   * servicios; se vuelven accesibles en todas las partes de la aplicación.
